@@ -9,4 +9,8 @@
 
 <b><u>Discription:</u></b>
 
-Sudoku Puzzle solver that handles mutiple grids plus puzzles that are 1-9/A-Z. This basically "brute forces" the puzzle. The harder the puzzle is, the longer it will take to solve. 
+Sudoku Puzzle solver that handles mutiple grids plus puzzles that are 1-9/A-Z. In simplest words, it "brute forces" the puzzle. The harder the puzzle is, the longer it will take to solve.
+
+<b>Backtracking Algorithm:</b>
+
+The algorithm checks all possible candidates, that it be digits or letters, alligns a candidate and moves to the next cell. If a conflict is found, it backtracks and trys the next candidate. I also have functions inplemented that checks to make sure a voliation of the sudoku rule set doesnt happen before placing the candidate. 
