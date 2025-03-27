@@ -8,4 +8,5 @@
 </details>
 
 <b><u>Discription:</u></b>
+
 Sudoku Puzzle solver that handles mutiple grids plus puzzles that are 1-9/A-Z. This basically "brute forces" the puzzle. The harder the puzzle is, the longer it will take to solve. 
