@@ -13,4 +13,4 @@ Sudoku Puzzle solver that handles mutiple grids plus puzzles that are 1-9/A-Z. I
 
 <b>Backtracking Algorithm:</b>
 
-The algorithm checks all possible candidates, that it be digits or letters, alligns a candidate and moves to the next cell. If a conflict is found, it backtracks and trys the next candidate. I also have functions inplemented that checks to make sure a voliation of the sudoku rule set doesnt happen before placing the candidate. 
+The algorithm checks all possible candidates, that it be digits or letters, alligns a candidate and moves to the next cell. If a conflict is found, it backtracks and trys the next candidate. I also have functions implemented that checks to make sure a violation of the sudoku rule set doesn't happen before placing the candidate. 
