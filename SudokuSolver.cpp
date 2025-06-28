@@ -5,6 +5,7 @@
 #define NOMINMAX
 #endif
 
+#include "resource.h"
 #include <algorithm>
 #include <cmath>
 #include <windows.h>
@@ -276,7 +277,7 @@ void GenerateGrid(HWND hParent)
     gBoardSize = _ttoi(buf);
     SetSubgridDimensions(gBoardSize);
 
-    // Compute cellSize so the grid fits within PUZZLE_WIDTH×PUZZLE_HEIGHT
+    // Compute cellSize so the grid fits within PUZZLE_WIDTHÃ—PUZZLE_HEIGHT
     int possibleCellSizeW = (PUZZLE_WIDTH - (gBoardSize - 1) * CELL_SPACING) / gBoardSize;
     int possibleCellSizeH = (PUZZLE_HEIGHT - (gBoardSize - 1) * CELL_SPACING) / gBoardSize;
     int cellSize = std::min(possibleCellSizeW, possibleCellSizeH);
@@ -560,21 +561,22 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int nCmdShow)
 {
     const TCHAR szClassName[] = _T("SudokuSolverClass");
-
-    WNDCLASS wc = { 0 };
+    WNDCLASSEX wc = { 0 };
+    wc.cbSize = sizeof(wc);
+    wc.style = CS_HREDRAW | CS_VREDRAW;
     wc.lpfnWndProc = WndProc;
     wc.hInstance = hInstance;
-    wc.lpszClassName = szClassName;
+    wc.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_ICON1));       // big icon
+    wc.hIconSm = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_ICON1));       // small icon
     wc.hCursor = LoadCursor(NULL, IDC_ARROW);
     wc.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
+    wc.lpszClassName = szClassName;
 
-    if (!RegisterClass(&wc))
+    if (!RegisterClassEx(&wc))
         return 0;
 
     HWND hwnd = CreateWindowEx(
-        0,
-        szClassName,
-        _T("Sudoku Solver"),
+        0, szClassName, _T("Sudoku Solver"),
         WS_OVERLAPPEDWINDOW,
         CW_USEDEFAULT, CW_USEDEFAULT,
         535, 600,
